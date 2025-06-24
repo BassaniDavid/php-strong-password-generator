@@ -1,7 +1,5 @@
 <?php
 
-$frase_apertura = "Nessun parametro valido inserito";
-
 isset($_GET["password"]) && $_GET["password"] >= 6 && $_GET["password"] <= 12 ? $lunghezza_password = (int)$_GET["password"] : $lunghezza_password = "parametro non valido" ;
 
 //echo $lunghezza_password;
@@ -27,15 +25,12 @@ require_once './functions.php';
     </header>
     <main>
       <div>
-        <?php
-          if(is_string($lunghezza_password)){
-            echo $lunghezza_password;
-          }else{
-           echo generaPassword($lunghezza_password,true,true,true);
-          }
-        ?>
+        <h3>
+          decidi le caratteristiche della tua nuova password e la genereremo per te!
+        </h3>
       </div>
-      <form action="index.php" method="get">
+      
+      <form action="result.php" method="get">
         <label for="password">Lunghezza password</label>
         <input type="number" name="password" id="password" min="6" max="20" />
         <button type="submit">Clicca qui per generare la tua nuova password</button>
