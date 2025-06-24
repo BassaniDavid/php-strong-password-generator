@@ -4,41 +4,11 @@ $frase_apertura = "Nessun parametro valido inserito";
 
 isset($_GET["password"]) && $_GET["password"] >= 6 && $_GET["password"] <= 12 ? $lunghezza_password = (int)$_GET["password"] : $lunghezza_password = "parametro non valido" ;
 
-echo $lunghezza_password;
-echo $frase_apertura;
+//echo $lunghezza_password;
+//echo $frase_apertura;
 
-// funzione
-// $usaLettere = on, $usaNumeri = on, $usaSimboli = on
-function generaPassword($lunghezza,$usaLettere, $usaNumeri, $usaSimboli) {
-    $lettere = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $numeri = '0123456789';
-    $simboli = '!@#$%^&*()-_=+[]{}|;:,.<>?';
-
-    $caratteri = '';
-
-    if ($usaLettere) {
-        $caratteri .= $lettere;
-    }
-    if ($usaNumeri) {
-        $caratteri .= $numeri;
-    }
-    if ($usaSimboli) {
-        $caratteri .= $simboli;
-    }
-
-    if ($caratteri === '') {
-        return 'Errore: selezionare almeno un tipo di carattere.';
-    }
-
-    $password = '';
-    $max = strlen($caratteri) - 1;
-
-    for ($i = 0; $i < $lunghezza; $i++) {
-        $password .= $caratteri[random_int(0, $max)];
-    }
-
-    return $password;
-}
+//includo la funzione
+require_once './functions.php';
 
 
 ?>
@@ -67,7 +37,7 @@ function generaPassword($lunghezza,$usaLettere, $usaNumeri, $usaSimboli) {
       </div>
       <form action="index.php" method="get">
         <label for="password">Lunghezza password</label>
-        <input type="number" name="password" id="password" min="6" max="12" />
+        <input type="number" name="password" id="password" min="6" max="20" />
         <button type="submit">Clicca qui per generare la tua nuova password</button>
       </form>
     </main>
