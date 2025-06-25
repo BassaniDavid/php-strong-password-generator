@@ -6,7 +6,7 @@ $usaNumeri = false;
 $usaSimboli = false;
 
 // controllo per numero lunghezza password
-isset($_GET["password"]) && $_GET["password"] >= 6 && $_GET["password"] <= 12 ? $lunghezza_password = (int)$_GET["password"] : $lunghezza_password = "ops! qualcosa è andato storto!" ;
+isset($_GET["password"]) && $_GET["password"] >= 6 && $_GET["password"] <= 20 ? $lunghezza_password = (int)$_GET["password"] : $lunghezza_password = "ops! qualcosa è andato storto!" ;
 
 // controllo per lettere, simboli e numeri e in caso siano stati checcati, modifica la variabile in true
 isset($_GET["lettere"]) && $_GET["lettere"] == "on" ? $usaLettere = true : $usaLettere = false;
@@ -36,14 +36,15 @@ function generaPassword($lunghezza,$usaLettere, $usaNumeri, $usaSimboli) {
     }
 
     $password = '';
-    $max = strlen($caratteri) - 1;
-
-    for ($i = 0; $i < $lunghezza; $i++) {
-        $password .= $caratteri[random_int(0, $max)];
+    
+    for($i=0; $i < $GLOBALS['lunghezza_password']; $i++) {
+        $random_pos = rand(0, strlen($caratteri) - 1);
+        $random_car = substr($caratteri, $random_pos, 1);
+        $password .= $random_car;
     }
+
 
     return $password;
 }
-
 
 ?>

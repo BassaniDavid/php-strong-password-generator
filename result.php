@@ -20,7 +20,7 @@ require_once './functions.php';
       <h2 class="text-light mb-4">Genera una password sicura</h2>
     </header>
     <main class="text-light container">
-    <h3>Ecco la tua nuova password nuova fiammante!</h3>
+    <h3>Ecco la tua nuova password di <?php echo $lunghezza_password ?> caratteri nuova fiammante!</h3>
     <div class="card p-3 m-5">
         <div class="fs-1 fw-bolder">
         <?php
